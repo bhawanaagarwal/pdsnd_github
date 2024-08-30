@@ -91,6 +91,22 @@ def load_data(city, month, day):
 
     return df
 
+def display_stats(df, col_name, label_name):
+    "Displaying statistics for the given options"
+
+    '''
+    Inputs:
+    - df: dataframe
+    - col_name: column name for which the frequency needs to analysed
+    - label_name: label for the print message for each column
+    '''
+
+    frequent_val = df[col_name].mode()[0]
+    print(f"Most common {label_name}: {frequent_val}")
+    print(f"Count: {df[col_name].value_counts()[frequent_val]}\n")
+
+
+
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
@@ -99,20 +115,15 @@ def time_stats(df):
     start_time = time.time()
 
     # display the most common month
-    common_month = df['month'].mode()[0]
-    print(f"Most common month of Travel: {common_month}")
-    print(f"Count: {df['month'].value_counts()[common_month]}\n")
+    display_stats(df, 'month', 'month of travel')
 
     # display the most common day of week
-    common_day = df['day_of_week'].mode()[0]
-    print(f"Most common day of Travel: {common_day}")
-    print(f"Count: {df['day_of_week'].value_counts()[common_day]}\n")
+    display_stats(df, 'day_of_week', 'day of travel')
 
     # display the most common start hour
-    hours = df['Start Time'].dt.hour
-    common_hour = hours.mode()[0]
-    print(f"Most common hour of Travel: {common_hour}")
-    print(f"Count: {hours.value_counts()[common_hour]}\n")
+    df['hour'] = df['Start Time'].dt.hour
+
+    display_stats(df, 'hour', 'hour of travel')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
