@@ -13,11 +13,15 @@ Total and average travel time
 Most traveled hour, day and month
 Most frequent Start and End Station
 Number of User Types
+Most frequent birth year
+
+The project handles edge cases like filling nan values with the most frequent values as dropping null values will lead to only one type of user in the dataset.
+
+Also, it is known that using mode for filling nan values is not the optimal solution. We will work on this later using other imputation methods.
 
 ### Files used
-Include the files used
+Chicago, New York and Washington dataset in the csv format
+The python file is of .py format - bikeshare_2.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
-This file comprises of the bikeshare analysis for city - Chicago, New York and Washington
+This project is inpired and guided by the udacity nano degree course - Programming with Python.
